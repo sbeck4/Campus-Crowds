@@ -13,6 +13,7 @@
 		8312C6361E380F2400B2A214 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8312C6341E380F2400B2A214 /* Main.storyboard */; };
 		8312C6381E380F2400B2A214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8312C6371E380F2400B2A214 /* Assets.xcassets */; };
 		8312C63B1E380F2400B2A214 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8312C6391E380F2400B2A214 /* LaunchScreen.storyboard */; };
+		833191601E3E8A6900AB2317 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331915F1E3E8A6900AB2317 /* Places.swift */; };
 		833E68131E3E8307009CA34C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 833E68121E3E8307009CA34C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		8312C6371E380F2400B2A214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8312C63A1E380F2400B2A214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8312C63C1E380F2400B2A214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8331915F1E3E8A6900AB2317 /* Places.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
 		833E68121E3E8307009CA34C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F17E6240A9FEBB751B9EF5A3 /* Pods-Clemson Crowds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clemson Crowds.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clemson Crowds/Pods-Clemson Crowds.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 			children = (
 				8312C6301E380F2400B2A214 /* AppDelegate.swift */,
 				8312C6321E380F2400B2A214 /* ViewController.swift */,
+				8331915F1E3E8A6900AB2317 /* Places.swift */,
 				8312C6341E380F2400B2A214 /* Main.storyboard */,
 				8312C6371E380F2400B2A214 /* Assets.xcassets */,
 				8312C6391E380F2400B2A214 /* LaunchScreen.storyboard */,
@@ -218,6 +221,7 @@
 			files = (
 				8312C6331E380F2400B2A214 /* ViewController.swift in Sources */,
 				8312C6311E380F2400B2A214 /* AppDelegate.swift in Sources */,
+				833191601E3E8A6900AB2317 /* Places.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
