@@ -7,28 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F4CAC3B1F46C15E7D5817F1 /* libPods-Clemson Crowds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A8CDDAD4AD4229FEA69A83 /* libPods-Clemson Crowds.a */; };
 		8312C6311E380F2400B2A214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8312C6301E380F2400B2A214 /* AppDelegate.swift */; };
-		8312C6331E380F2400B2A214 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8312C6321E380F2400B2A214 /* ViewController.swift */; };
 		8312C6361E380F2400B2A214 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8312C6341E380F2400B2A214 /* Main.storyboard */; };
 		8312C6381E380F2400B2A214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8312C6371E380F2400B2A214 /* Assets.xcassets */; };
 		8312C63B1E380F2400B2A214 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8312C6391E380F2400B2A214 /* LaunchScreen.storyboard */; };
 		833191601E3E8A6900AB2317 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331915F1E3E8A6900AB2317 /* Places.swift */; };
+		833191621E3EE74D00AB2317 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833191611E3EE74D00AB2317 /* ListViewController.swift */; };
+		833191641E3EF62A00AB2317 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833191631E3EF62A00AB2317 /* Place.swift */; };
 		833E68131E3E8307009CA34C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 833E68121E3E8307009CA34C /* GoogleService-Info.plist */; };
+		83CF93881E3FCF3D00E9A2CD /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF93871E3FCF3D00E9A2CD /* ListTableViewCell.swift */; };
+		8D25DA5A7144431868479A83 /* Pods_Clemson_Crowds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCCC8A6E7E09B46E0ABE54 /* Pods_Clemson_Crowds.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		50A36FC42B90AA1F2C2A4083 /* Pods-Clemson Crowds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clemson Crowds.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clemson Crowds/Pods-Clemson Crowds.release.xcconfig"; sourceTree = "<group>"; };
-		55A8CDDAD4AD4229FEA69A83 /* libPods-Clemson Crowds.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Clemson Crowds.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FCCC8A6E7E09B46E0ABE54 /* Pods_Clemson_Crowds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clemson_Crowds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8312C62D1E380F2400B2A214 /* Clemson Crowds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clemson Crowds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8312C6301E380F2400B2A214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8312C6321E380F2400B2A214 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8312C6351E380F2400B2A214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8312C6371E380F2400B2A214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8312C63A1E380F2400B2A214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8312C63C1E380F2400B2A214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8331915F1E3E8A6900AB2317 /* Places.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
+		833191611E3EE74D00AB2317 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		833191631E3EF62A00AB2317 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		833E68121E3E8307009CA34C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		83CF93871E3FCF3D00E9A2CD /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		F17E6240A9FEBB751B9EF5A3 /* Pods-Clemson Crowds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clemson Crowds.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clemson Crowds/Pods-Clemson Crowds.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,7 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F4CAC3B1F46C15E7D5817F1 /* libPods-Clemson Crowds.a in Frameworks */,
+				8D25DA5A7144431868479A83 /* Pods_Clemson_Crowds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,8 +79,10 @@
 			isa = PBXGroup;
 			children = (
 				8312C6301E380F2400B2A214 /* AppDelegate.swift */,
-				8312C6321E380F2400B2A214 /* ViewController.swift */,
 				8331915F1E3E8A6900AB2317 /* Places.swift */,
+				833191631E3EF62A00AB2317 /* Place.swift */,
+				833191611E3EE74D00AB2317 /* ListViewController.swift */,
+				83CF93871E3FCF3D00E9A2CD /* ListTableViewCell.swift */,
 				8312C6341E380F2400B2A214 /* Main.storyboard */,
 				8312C6371E380F2400B2A214 /* Assets.xcassets */,
 				8312C6391E380F2400B2A214 /* LaunchScreen.storyboard */,
@@ -89,7 +95,7 @@
 		953F5B584C91871C992D11F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				55A8CDDAD4AD4229FEA69A83 /* libPods-Clemson Crowds.a */,
+				56FCCC8A6E7E09B46E0ABE54 /* Pods_Clemson_Crowds.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,9 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8312C6331E380F2400B2A214 /* ViewController.swift in Sources */,
 				8312C6311E380F2400B2A214 /* AppDelegate.swift in Sources */,
 				833191601E3E8A6900AB2317 /* Places.swift in Sources */,
+				833191621E3EE74D00AB2317 /* ListViewController.swift in Sources */,
+				833191641E3EF62A00AB2317 /* Place.swift in Sources */,
+				83CF93881E3FCF3D00E9A2CD /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
