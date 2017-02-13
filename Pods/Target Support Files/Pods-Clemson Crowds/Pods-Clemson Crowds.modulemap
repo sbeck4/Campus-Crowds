@@ -1,0 +1,6 @@
+framework module Pods_Clemson_Crowds {
+  umbrella header "Pods-Clemson Crowds-umbrella.h"
+
+  export *
+  module * { export * }
+}
