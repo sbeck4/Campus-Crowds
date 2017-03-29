@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 // Each location has:
 /*  Name
@@ -14,30 +15,48 @@ import UIKit
  *  Longitude
  *  Current crowd level
  *  last updated time
- *  last 3 updates: (time, crowd level)
  */
 import FirebaseDatabase
 
-class Place: NSObject {
+class Place: NSObject, MKAnnotation {
 
     var name: String!
     var latitude: Double!
     var longitude: Double!
     var currentCrowdLevel: Int!
-    var lastUpdatedTime: Date!
     var imageName: String!
+    var maxCrowdNumber: Int!
+    var currentCrowdNumber: Int!
+    var floors: [Place]!
+    var placeImage: String!
+    var coordinate: CLLocationCoordinate2D {
+        get {
+            return CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(latitude), longitude: CLLocationDegrees.init(longitude))
+        }
+    }
+    var title: String?
+    var subtitle: String?
 
     override init() {
         super.init()
     }
 
-    init(name: String, latitude: Double, longitude: Double, currentCrowdLevel: Int, lastUpdatedTime: Date, imageName: String) {
+
+    init(name: String, latitude: Double, longitude: Double, currentCrowdLevel: Int, imageName: String, maxCrowdNumber: Int, currentCrowdNumber: Int, floors: [Place], placeImage: String) {
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
         self.currentCrowdLevel = currentCrowdLevel
-        self.lastUpdatedTime = lastUpdatedTime
         self.imageName = imageName
+        self.floors = floors
+        self.maxCrowdNumber = maxCrowdNumber
+        self.currentCrowdNumber = currentCrowdNumber
+        self.placeImage = placeImage
+        self.title = name
+        self.subtitle = ""
+
+        super.init()
+
     }
 
     class func snapshotToPlace(snap: FIRDataSnapshot) -> Place {
@@ -47,24 +66,28 @@ class Place: NSObject {
         place.latitude = Double(snap.childSnapshot(forPath: "latitude").value as! String)
         place.longitude = Double(snap.childSnapshot(forPath: "longitude").value as! String)
         place.currentCrowdLevel = Int(snap.childSnapshot(forPath: "currentCrowdLevel").value as! String)
-
-        let strDate = snap.childSnapshot(forPath: "lastUpdatedTime").value as! String
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-        let date = dateFormatter.date(from: strDate)
-        place.lastUpdatedTime = date
-
         place.imageName = snap.childSnapshot(forPath: "imageName").value as! String
+        place.floors = []
+        if snap.childSnapshot(forPath: "floors").childrenCount > 0 {
+            let floors = snap.childSnapshot(forPath: "floors").children
+            for (_, floor) in floors.enumerated() {
+                let dict = (floor as! FIRDataSnapshot).value! as! [String:String]
+                let aFloor = Place.init(name: dict["name"]!, latitude: Double(dict["latitude"]! as String)!, longitude: Double(dict["longitude"]! as String)!, currentCrowdLevel: Int(dict["currentCrowdLevel"]! as String)!, imageName: dict["imageName"]!, maxCrowdNumber: Int(dict["maxCrowdNumber"]! as String)!, currentCrowdNumber: Int(dict["currentCrowdLevel"]! as String)!, floors: [], placeImage: dict["placeImage"]!)
+                place.floors.append(aFloor)
+            }
+        }
+        place.maxCrowdNumber = Int(snap.childSnapshot(forPath: "maxCrowdNumber").value as! String)
+        place.currentCrowdNumber = Int(snap.childSnapshot(forPath: "currentCrowdNumber").value as! String)
+        place.placeImage = snap.childSnapshot(forPath: "placeImage").value as! String
 
         return place
     }
 
     func dictionaryOf() -> [String: String] {
-        return ["name": name!, "latitude": String(describing: latitude!), "longitude": String(describing: longitude!), "currentCrowdLevel": String(describing: currentCrowdLevel!), "lastUpdatedTime": String(describing: lastUpdatedTime!), "imageName": imageName!]
+        return ["name": name!, "latitude": String(describing: latitude!), "longitude": String(describing: longitude!), "currentCrowdLevel": String(describing: currentCrowdLevel!), "imageName": imageName!, "maxCrowdNumber": String(describing: maxCrowdNumber!), "currentCrowdNumber": String(describing: currentCrowdNumber!), "placeImage": String(describing: placeImage!)]
     }
 
-    func placeImage() -> UIImage {
+    func placeImageIcon() -> UIImage {
         switch self.imageName! {
         case "food":
             return #imageLiteral(resourceName: "food")
@@ -128,22 +151,34 @@ class Place: NSObject {
             returnString = "Just Now"
         }
 
-
-//        if components.second! < 60 {
-//            returnString = "Just Now"
-//        } else if components.minute! >= 1{
-//            returnString = String(describing: components.minute) + " min ago"
-//        } else if components.hour! >= 1{
-//            returnString = String(describing: components.hour) + " hour ago"
-//        } else if components.day! >= 1{
-//            returnString = String(describing: components.day) + " days ago"
-//        } else if components.month! >= 1{
-//            returnString = String(describing: components.month) + " month ago"
-//        } else if components.year! >= 1 {
-//            returnString = String(describing: components.year) + " year ago"
-//        }
-
         return returnString
     }
 
 }
+
+extension UIImageView {
+
+    func loadImageFromUrl(url: String){
+
+        // Create Url from string
+        let url = NSURL(string: url)!
+
+        // Download task:
+        // - sharedSession = global NSURLCache, NSHTTPCookieStorage and NSURLCredentialStorage objects.
+        let task = URLSession.shared.dataTask(with: url as URL) { (responseData, responseUrl, error) -> Void in
+            // if responseData is not null...
+            if let data = responseData{
+
+                // execute in UI thread
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.image = UIImage(data: data)
+                })
+            }
+        }
+
+        // Run task
+        task.resume()
+    }
+    
+}
+

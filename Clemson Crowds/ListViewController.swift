@@ -18,7 +18,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         ref = FIRDatabase.database().reference()
+        self.addPlaces()
 
         let _ = (ref?.queryLimited(toFirst: 100))?.observe(.value, with: { (snapshot) in
             self.places.removeAll()
@@ -47,11 +49,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         let place = places[indexPath.row]
         cell.iconView.layer.cornerRadius = cell.iconView.frame.width/2
-        cell.iconImageView.image = place.placeImage()
+        cell.iconImageView.image = place.placeImageIcon()
         cell.crowdLevelView.layer.cornerRadius = cell.crowdLevelView.frame.width/2
         cell.crowdLevelImageView.image = place.crowdImage()
         cell.placeNameLabel.text = place.name
-        cell.lastUpdatedTimeLabel.text = Place.dateformatter(date: place.lastUpdatedTime!)
 
         return cell
     }
@@ -65,6 +66,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let places = Places.initalizePlaces()
         for place in places {
             ref?.child(place.name!).setValue(place.dictionaryOf())
+            if place.floors != [] {
+                for floor in place.floors {
+                    ref?.child("\(place.name!)/floors/\(floor.name!)").setValue(floor.dictionaryOf())
+                }
+            }
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+           let destVC = segue.destination as! DetailViewController
+            destVC.place = places[(tableView.indexPathForSelectedRow?.row)!]
+        } else if segue.identifier == "mapSegue" {
+            let mapVC = segue.destination as! MapViewController
+            mapVC.places = places
         }
     }
 
