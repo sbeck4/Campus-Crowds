@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
@@ -15,11 +16,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var places: [Place] = []
     let initialLocation = CLLocation(latitude: 34.676099, longitude: -82.836976)
     let regionRadius: CLLocationDistance = 900
+    var locationManager: CLLocationManager!
+    var location: CLLocation?
+    var tappedPlace: Place?
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        getLocation()
+        
         mapView.delegate = self
-        centerMapOnLocation(location: initialLocation)
+        mapView.showsUserLocation = true;
+        centerMapOnLocation(location: initialLocation )
         addPins()
     }
 
@@ -34,14 +47,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mapView.addAnnotation(place)
         }
     }
-
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("Pin Tapped")
+    
+    func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    {
+        for place in places
+        {
+            if(place.name == (annotationView.annotation?.title)!)
+            {
+                tappedPlace = place
+            }
+        }
+        
+        self.performSegue(withIdentifier: "showDetailFromMap", sender: nil)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? Place {
             let identifier = "pin"
+            annotation.title = annotation.name!
             var view: MKPinAnnotationView
             if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
                 as? MKPinAnnotationView { // 2
@@ -58,6 +81,47 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         return nil
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "showDetailFromMap"
+        {
+            let destVC = segue.destination as! DetailViewController
+            destVC.place = tappedPlace!
+        }
+    }
+    
+    func getLocation()
+    {
+        if CLLocationManager.authorizationStatus() == .authorizedAlways ||
+            CLLocationManager.authorizationStatus() == .authorizedWhenInUse
+        {
+            
+            if (CLLocationManager.locationServicesEnabled())
+            {
+                
+                locationManager.startUpdatingLocation()
 
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0)
+                {
+                    self.locationManager!.stopUpdatingLocation()
+                }
+            }
+        }
+        else
+        {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+
+}
+
+extension MapViewController: CLLocationManagerDelegate
+{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        location = locations.last! as CLLocation
+        centerMapOnLocation(location: location!)
+    }
 }
 
