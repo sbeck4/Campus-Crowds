@@ -20,7 +20,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
         ref = FIRDatabase.database().reference()
-        self.addPlaces()
+//        self.addPlaces()
 
         let _ = (ref?.queryLimited(toFirst: 100))?.observe(.value, with: { (snapshot) in
             self.places.removeAll()

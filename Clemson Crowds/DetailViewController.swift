@@ -10,15 +10,22 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-
     @IBOutlet var placeImage: UIImageView!
     var place: Place = Place()
+    @IBOutlet var hoursLabel: UILabel!
+    @IBOutlet var addressLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.title = place.name
-        print(place.placeImage)
         placeImage.loadImageFromUrl(url: place.placeImage)
+        print(place.address)
+        print(place.hours)
+//        place.hours = place.hours.replacingOccurrences(of: ", ", with: "\n")
+//        place.hours = place.hours.replacingOccurrences(of: ": ", with: ":\n  ")
+
+        hoursLabel.text = place.hours
+        addressLabel.text = place.address
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -29,6 +29,9 @@ class Place: NSObject, MKAnnotation {
     var currentCrowdNumber: Int!
     var floors: [Place]!
     var placeImage: String!
+    var hours: String!
+    var address: String!
+
     var coordinate: CLLocationCoordinate2D {
         get {
             return CLLocationCoordinate2D.init(latitude: CLLocationDegrees.init(latitude), longitude: CLLocationDegrees.init(longitude))
@@ -42,7 +45,7 @@ class Place: NSObject, MKAnnotation {
     }
 
 
-    init(name: String, latitude: Double, longitude: Double, currentCrowdLevel: Int, imageName: String, maxCrowdNumber: Int, currentCrowdNumber: Int, floors: [Place], placeImage: String) {
+    init(name: String, latitude: Double, longitude: Double, currentCrowdLevel: Int, imageName: String, maxCrowdNumber: Int, currentCrowdNumber: Int, floors: [Place], placeImage: String, hours: String, address: String) {
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
@@ -54,6 +57,8 @@ class Place: NSObject, MKAnnotation {
         self.placeImage = placeImage
         self.title = name
         self.subtitle = ""
+        self.hours = hours
+        self.address = address
 
         super.init()
 
@@ -72,19 +77,21 @@ class Place: NSObject, MKAnnotation {
             let floors = snap.childSnapshot(forPath: "floors").children
             for (_, floor) in floors.enumerated() {
                 let dict = (floor as! FIRDataSnapshot).value! as! [String:String]
-                let aFloor = Place.init(name: dict["name"]!, latitude: Double(dict["latitude"]! as String)!, longitude: Double(dict["longitude"]! as String)!, currentCrowdLevel: Int(dict["currentCrowdLevel"]! as String)!, imageName: dict["imageName"]!, maxCrowdNumber: Int(dict["maxCrowdNumber"]! as String)!, currentCrowdNumber: Int(dict["currentCrowdLevel"]! as String)!, floors: [], placeImage: dict["placeImage"]!)
+                let aFloor = Place.init(name: dict["name"]!, latitude: Double(dict["latitude"]! as String)!, longitude: Double(dict["longitude"]! as String)!, currentCrowdLevel: Int(dict["currentCrowdLevel"]! as String)!, imageName: dict["imageName"]!, maxCrowdNumber: Int(dict["maxCrowdNumber"]! as String)!, currentCrowdNumber: Int(dict["currentCrowdLevel"]! as String)!, floors: [], placeImage: dict["placeImage"]!, hours: dict["hours"]!, address: dict["address"]!)
                 place.floors.append(aFloor)
             }
         }
         place.maxCrowdNumber = Int(snap.childSnapshot(forPath: "maxCrowdNumber").value as! String)
         place.currentCrowdNumber = Int(snap.childSnapshot(forPath: "currentCrowdNumber").value as! String)
         place.placeImage = snap.childSnapshot(forPath: "placeImage").value as! String
+        place.address = snap.childSnapshot(forPath: "address").value as! String
+        place.hours = snap.childSnapshot(forPath: "hours").value as! String
 
         return place
     }
 
     func dictionaryOf() -> [String: String] {
-        return ["name": name!, "latitude": String(describing: latitude!), "longitude": String(describing: longitude!), "currentCrowdLevel": String(describing: currentCrowdLevel!), "imageName": imageName!, "maxCrowdNumber": String(describing: maxCrowdNumber!), "currentCrowdNumber": String(describing: currentCrowdNumber!), "placeImage": String(describing: placeImage!)]
+        return ["name": name!, "latitude": String(describing: latitude!), "longitude": String(describing: longitude!), "currentCrowdLevel": String(describing: currentCrowdLevel!), "imageName": imageName!, "maxCrowdNumber": String(describing: maxCrowdNumber!), "currentCrowdNumber": String(describing: currentCrowdNumber!), "placeImage": String(describing: placeImage!), "hours": String(describing: hours!), "address": String(describing: address!)]
     }
 
     func placeImageIcon() -> UIImage {
