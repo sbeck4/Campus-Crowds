@@ -65,6 +65,20 @@ class Places {
 
         return places
     }
+
+
+    class func produceRandomData(places: [Place]) -> [Place] {
+        for place in places {
+            place.currentCrowdNumber = Int.init(arc4random_uniform(UInt32.init(place.maxCrowdNumber)))
+            place.currentCrowdLevel = Place.currentCrowdLevelCalculation(num: Int(100.0 * (Float(place.currentCrowdNumber)/Float(place.maxCrowdNumber))))
+            print(Float(place.currentCrowdNumber))
+            print(Float(place.maxCrowdNumber))
+            print((Float(place.currentCrowdLevel)/Float(place.maxCrowdNumber)))
+            print(100.0 * (Float(place.currentCrowdLevel)/Float(place.maxCrowdNumber)))
+        }
+
+        return places
+    }
 }
 
 /*

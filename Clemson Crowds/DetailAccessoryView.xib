@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DetailAccessoryView" customModule="Clemson_Crowds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="179" height="118"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTi-zu-PuW">
+                    <rect key="frame" x="7" y="73" width="39" height="39"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crowded" translatesAutoresizingMaskIntoConstraints="NO" id="YVg-Ac-mn7">
+                            <rect key="frame" x="7" y="9" width="24" height="20"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.99914473299999995" green="0.88002699610000001" blue="0.7493458986" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="YVg-Ac-mn7" firstAttribute="leading" secondItem="TTi-zu-PuW" secondAttribute="leading" constant="7" id="1M3-Tp-hkP"/>
+                        <constraint firstAttribute="width" constant="39" id="1YF-KJ-5n9"/>
+                        <constraint firstAttribute="trailing" secondItem="YVg-Ac-mn7" secondAttribute="trailing" constant="8" id="4bR-Cf-Mqk"/>
+                        <constraint firstAttribute="height" constant="39" id="FKR-eU-ATX"/>
+                        <constraint firstAttribute="bottom" secondItem="YVg-Ac-mn7" secondAttribute="bottom" constant="10" id="VIV-Bz-6mv"/>
+                        <constraint firstItem="YVg-Ac-mn7" firstAttribute="top" secondItem="TTi-zu-PuW" secondAttribute="top" constant="9" id="uLx-DW-439"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regular Crowd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IZs-I1-vos">
+                    <rect key="frame" x="53" y="82" width="121" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="3tP-lS-b1v"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXc-VZ-OCr">
+                    <rect key="frame" x="56" y="0.0" width="66" height="66"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fitness" translatesAutoresizingMaskIntoConstraints="NO" id="NO9-42-LoB">
+                            <rect key="frame" x="11" y="11" width="44" height="45"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.93750864270000001" green="0.91206139330000002" blue="0.99890953299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="66" id="0HR-ZJ-Fop"/>
+                        <constraint firstAttribute="bottom" secondItem="NO9-42-LoB" secondAttribute="bottom" constant="10" id="4MR-e4-jcr"/>
+                        <constraint firstItem="NO9-42-LoB" firstAttribute="top" secondItem="tXc-VZ-OCr" secondAttribute="top" constant="11" id="RrY-KH-F8Z"/>
+                        <constraint firstItem="NO9-42-LoB" firstAttribute="leading" secondItem="tXc-VZ-OCr" secondAttribute="leading" constant="11" id="jOL-4J-o96"/>
+                        <constraint firstAttribute="width" constant="66" id="raX-5S-3l5"/>
+                        <constraint firstAttribute="trailing" secondItem="NO9-42-LoB" secondAttribute="trailing" constant="11" id="xeO-hQ-r2G"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="IZs-I1-vos" secondAttribute="trailing" constant="5" id="GJm-oA-XwR"/>
+                <constraint firstAttribute="trailing" secondItem="tXc-VZ-OCr" secondAttribute="trailing" constant="57" id="L1E-8x-h2V"/>
+                <constraint firstItem="tXc-VZ-OCr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dlz-kh-EH5"/>
+                <constraint firstAttribute="bottom" secondItem="IZs-I1-vos" secondAttribute="bottom" constant="15" id="hpd-g2-vR4"/>
+                <constraint firstItem="TTi-zu-PuW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="7" id="kKa-FZ-uc9"/>
+                <constraint firstItem="IZs-I1-vos" firstAttribute="leading" secondItem="TTi-zu-PuW" secondAttribute="trailing" constant="7" id="pzn-Iw-86o"/>
+                <constraint firstAttribute="bottom" secondItem="TTi-zu-PuW" secondAttribute="bottom" constant="6" id="uh0-z3-Myn"/>
+                <constraint firstItem="tXc-VZ-OCr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="56" id="y2X-Q3-63u"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="crowdDescriptionLabel" destination="IZs-I1-vos" id="5ZB-0I-7re"/>
+                <outlet property="crowdIconView" destination="YVg-Ac-mn7" id="r1T-QN-oxF"/>
+                <outlet property="crowdView" destination="TTi-zu-PuW" id="1bB-Nf-ceF"/>
+                <outlet property="placeIconView" destination="NO9-42-LoB" id="ce4-MO-rPW"/>
+                <outlet property="placeView" destination="tXc-VZ-OCr" id="5YY-pu-7bS"/>
+            </connections>
+            <point key="canvasLocation" x="-63.5" y="-219"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="crowded" width="980" height="752"/>
+        <image name="fitness" width="128" height="128"/>
+    </resources>
+</document>

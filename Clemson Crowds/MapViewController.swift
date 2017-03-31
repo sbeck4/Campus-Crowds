@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var locationManager: CLLocationManager!
     var location: CLLocation?
     var tappedPlace: Place?
+    var calloutView: MapAccessoryView?
 
     override func viewDidLoad()
     {
@@ -76,19 +77,42 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             } else {
                 // 3
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.pinTintColor = UIColor.orange
+
                 let button = UIButton.init(type: .detailDisclosure)
                 button.tintColor = UIColor.orange
                 view.rightCalloutAccessoryView = button
+
+                let detailViews = Bundle.main.loadNibNamed("DetailAccessoryView", owner: nil, options: nil)
+                let detailView = (detailViews?[0] as? DetailAccessoryView)!
+                detailView.placeView.layer.cornerRadius = detailView.placeView.frame.size.width/2
+                detailView.placeView.clipsToBounds = true
+
+                detailView.crowdView.layer.cornerRadius = detailView.crowdView.frame.size.width/2
+                detailView.crowdView.clipsToBounds = true
+
+                detailView.placeIconView.image = annotation.placeImageIcon()
+                detailView.crowdIconView.image = annotation.crowdImage()
+                detailView.crowdDescriptionLabel.text = annotation.crowdDescription()
+
+                let widthConstraint = NSLayoutConstraint(item: detailView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 179)
+                detailView.addConstraint(widthConstraint)
+
+                let heightConstraint = NSLayoutConstraint(item: detailView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 118)
+                detailView.addConstraint(heightConstraint)
+
+                view.detailCalloutAccessoryView = detailView
+
+                view.canShowCallout = true
             }
 
             return view
         }
         return nil
     }
-    
+
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "showDetailFromMap"
@@ -122,7 +146,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
 
 }
-
 
 
 extension MapViewController: CLLocationManagerDelegate

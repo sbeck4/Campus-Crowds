@@ -23,11 +23,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         hoursLabel.text = place.hours
         addressLabel.text = place.address
         self.title = place.name
-
-//        if place.floors.count == 0 {
-//            hoursLabel.font = hoursLabel.font.withSize(22)
-//            addressLabel.font = addressLabel.font.withSize(22)
-//        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

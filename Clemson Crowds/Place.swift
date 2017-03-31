@@ -44,7 +44,6 @@ class Place: NSObject, MKAnnotation {
         super.init()
     }
 
-
     init(name: String, latitude: Double, longitude: Double, currentCrowdLevel: Int, imageName: String, maxCrowdNumber: Int, currentCrowdNumber: Int, floors: [Place], placeImage: String, hours: String, address: String) {
         self.name = name
         self.latitude = latitude
@@ -147,6 +146,18 @@ class Place: NSObject, MKAnnotation {
             return "Very Crowded"
         default:
             return "Not Crowded"
+        }
+    }
+
+    class func currentCrowdLevelCalculation(num: Int) -> Int {
+        if num <= 100 && num > 75 {
+            return 3
+        } else if num <= 75 && num > 50 {
+            return 2
+        } else if num <= 50 && num > 25 {
+            return 1
+        } else {
+            return 0
         }
     }
 

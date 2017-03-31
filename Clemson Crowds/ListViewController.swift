@@ -30,6 +30,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.places.append(Place.snapshotToPlace(snap: snap))
             }
 
+            self.places = Places.produceRandomData(places: self.places)
             self.cacheArray = [UIImage](repeating: UIImage(), count: self.places.count)
             self.tableView.reloadData()
         })
@@ -53,6 +54,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.iconView.layer.cornerRadius = cell.iconView.frame.width/2
         cell.placeIconImage.image = place.placeImageIcon()
         cell.crowdLevelView.layer.cornerRadius = cell.crowdLevelView.frame.width/2
+//        print(place.currentCrowdLevel)
         cell.crowdIconImage.image = place.crowdImage()
         cell.placeNameLabel.text = place.name
         cell.crowdLevelLabel.text = place.crowdDescription()
