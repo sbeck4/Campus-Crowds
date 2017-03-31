@@ -44,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMm-B8-7IK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="-52"/>
+            <point key="canvasLocation" x="1177" y="-65"/>
         </scene>
         <!--Clemson Crowds-->
         <scene sceneID="tne-QT-ifu">
@@ -186,7 +186,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Clemson Crowds" id="FJG-KA-VSe">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="AdG-Ba-btf">
+                        <barButtonItem key="rightBarButtonItem" image="map" id="AdG-Ba-btf">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="DiS-JX-son" kind="show" identifier="mapSegue" id="nHa-a1-sLs"/>
                             </connections>
@@ -369,6 +370,7 @@
                         <outlet property="addressLabel" destination="HLo-kD-kYH" id="qH0-V3-qjL"/>
                         <outlet property="hoursLabel" destination="duq-x1-paR" id="YxC-Dx-Cxg"/>
                         <outlet property="placeImage" destination="J3n-Sj-gaQ" id="DM1-fX-ra6"/>
+                        <outlet property="tableView" destination="0o3-qP-wpy" id="DNu-Ra-Vbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8V-vs-WWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -397,9 +399,10 @@
     <resources>
         <image name="books" width="128" height="128"/>
         <image name="crowded" width="980" height="752"/>
+        <image name="map" width="24" height="24"/>
         <image name="placeholder" width="1280" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E48-Me-J1C"/>
+        <segue reference="ixN-PC-xfU"/>
     </inferredMetricsTieBreakers>
 </document>

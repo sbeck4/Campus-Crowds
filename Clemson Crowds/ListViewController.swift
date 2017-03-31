@@ -72,18 +72,19 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                     })
                 }
             }
-            
-            // Run task
             task.resume()
         }
 
         cell.currentPeopleLabel.text = "~\(place.currentCrowdNumber!) people"
-
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places.count
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
 
@@ -107,6 +108,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             let mapVC = segue.destination as! MapViewController
             mapVC.places = places
         }
+
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        backItem.image = #imageLiteral(resourceName: "list")
+        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationItem.backBarButtonItem = backItem
     }
 
 

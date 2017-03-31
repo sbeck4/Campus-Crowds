@@ -14,6 +14,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var place: Place = Place()
     @IBOutlet var hoursLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         placeImage.loadImageFromUrl(url: place.placeImage)
         hoursLabel.text = place.hours
         addressLabel.text = place.address
+        self.title = place.name
+
+//        if place.floors.count == 0 {
+//            hoursLabel.font = hoursLabel.font.withSize(22)
+//            addressLabel.font = addressLabel.font.withSize(22)
+//        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

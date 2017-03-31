@@ -32,8 +32,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         mapView.delegate = self
         mapView.showsUserLocation = true;
-        centerMapOnLocation(location: initialLocation )
+        centerMapOnLocation(location: initialLocation)
         addPins()
+
+        self.title = "Map View"
     }
 
     func centerMapOnLocation(location: CLLocation) {
@@ -66,6 +68,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let identifier = "pin"
             annotation.title = annotation.name!
             var view: MKPinAnnotationView
+
             if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
                 as? MKPinAnnotationView { // 2
                 dequeuedView.annotation = annotation
@@ -75,8 +78,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton.init(type: .detailDisclosure)
+                view.pinTintColor = UIColor.orange
+                let button = UIButton.init(type: .detailDisclosure)
+                button.tintColor = UIColor.orange
+                view.rightCalloutAccessoryView = button
             }
+
             return view
         }
         return nil
@@ -115,6 +122,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
 
 }
+
+
 
 extension MapViewController: CLLocationManagerDelegate
 {
