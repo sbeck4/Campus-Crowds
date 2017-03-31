@@ -14,6 +14,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     var ref : FIRDatabaseReference?
     var places: [Place] = []
     @IBOutlet var tableView: UITableView!
+    var cacheArray: [UIImage] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.places.append(Place.snapshotToPlace(snap: snap))
             }
 
+            self.cacheArray = [UIImage](repeating: UIImage(), count: self.places.count)
             self.tableView.reloadData()
         })
 
@@ -45,14 +47,37 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! MainListTableViewCell
 
         let place = places[indexPath.row]
         cell.iconView.layer.cornerRadius = cell.iconView.frame.width/2
-        cell.iconImageView.image = place.placeImageIcon()
+        cell.placeIconImage.image = place.placeImageIcon()
         cell.crowdLevelView.layer.cornerRadius = cell.crowdLevelView.frame.width/2
-        cell.crowdLevelImageView.image = place.crowdImage()
+        cell.crowdIconImage.image = place.crowdImage()
         cell.placeNameLabel.text = place.name
+        cell.crowdLevelLabel.text = place.crowdDescription()
+        cell.placeImage.image = #imageLiteral(resourceName: "placeholder")
+
+        if cacheArray[indexPath.row].size != CGSize.zero {
+            cell.placeImage.image = cacheArray[indexPath.row]
+        } else {
+            let task = URLSession.shared.dataTask(with: URL.init(string: place.placeImage)!) { (responseData, responseUrl, error) -> Void in
+                // if responseData is not null...
+                if let data = responseData{
+
+                    // execute in UI thread
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.cacheArray[indexPath.row] = UIImage(data: data)!
+                        cell.placeImage.image = self.cacheArray[indexPath.row]
+                    })
+                }
+            }
+            
+            // Run task
+            task.resume()
+        }
+
+        cell.currentPeopleLabel.text = "~\(place.currentCrowdNumber!) people"
 
         return cell
     }

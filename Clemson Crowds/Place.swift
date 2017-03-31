@@ -134,6 +134,23 @@ class Place: NSObject, MKAnnotation {
         }
     }
 
+    func crowdDescription() -> String {
+
+        switch self.currentCrowdLevel {
+        case 0:
+            return "Not Crowded"
+        case 1:
+            return "Medium Crowd"
+        case 2:
+            return "Crowded"
+        case 3:
+            return "Very Crowded"
+        default:
+            return "Not Crowded"
+        }
+    }
+
+
     class func dateformatter(date: Date) -> String {
 
         let date1: Date = Date()

@@ -19,11 +19,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         self.navigationController?.title = place.name
         placeImage.loadImageFromUrl(url: place.placeImage)
-        print(place.address)
-        print(place.hours)
-//        place.hours = place.hours.replacingOccurrences(of: ", ", with: "\n")
-//        place.hours = place.hours.replacingOccurrences(of: ": ", with: ":\n  ")
-
         hoursLabel.text = place.hours
         addressLabel.text = place.address
     }

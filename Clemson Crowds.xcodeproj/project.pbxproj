@@ -18,6 +18,7 @@
 		83CF93881E3FCF3D00E9A2CD /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CF93871E3FCF3D00E9A2CD /* ListTableViewCell.swift */; };
 		83E226E71E8B76B600D635C7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E226E61E8B76B600D635C7 /* DetailViewController.swift */; };
 		83E226E91E8B8A7D00D635C7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E226E81E8B8A7D00D635C7 /* MapViewController.swift */; };
+		83F9E2F81E8DCD1D000B6C51 /* MainListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E2F71E8DCD1D000B6C51 /* MainListTableViewCell.swift */; };
 		8D25DA5A7144431868479A83 /* Pods_Clemson_Crowds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCCC8A6E7E09B46E0ABE54 /* Pods_Clemson_Crowds.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		83CF93871E3FCF3D00E9A2CD /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		83E226E61E8B76B600D635C7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		83E226E81E8B8A7D00D635C7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		83F9E2F71E8DCD1D000B6C51 /* MainListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListTableViewCell.swift; sourceTree = "<group>"; };
 		F17E6240A9FEBB751B9EF5A3 /* Pods-Clemson Crowds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clemson Crowds.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clemson Crowds/Pods-Clemson Crowds.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,8 +89,8 @@
 				833191631E3EF62A00AB2317 /* Place.swift */,
 				83E226E61E8B76B600D635C7 /* DetailViewController.swift */,
 				833191611E3EE74D00AB2317 /* ListViewController.swift */,
-				83CF93871E3FCF3D00E9A2CD /* ListTableViewCell.swift */,
 				83E226E81E8B8A7D00D635C7 /* MapViewController.swift */,
+				83F9E2F91E8DD16B000B6C51 /* Custom Cells */,
 				8312C6341E380F2400B2A214 /* Main.storyboard */,
 				8312C6371E380F2400B2A214 /* Assets.xcassets */,
 				8312C6391E380F2400B2A214 /* LaunchScreen.storyboard */,
@@ -96,6 +98,15 @@
 				833E68121E3E8307009CA34C /* GoogleService-Info.plist */,
 			);
 			path = "Clemson Crowds";
+			sourceTree = "<group>";
+		};
+		83F9E2F91E8DD16B000B6C51 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				83CF93871E3FCF3D00E9A2CD /* ListTableViewCell.swift */,
+				83F9E2F71E8DCD1D000B6C51 /* MainListTableViewCell.swift */,
+			);
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		953F5B584C91871C992D11F6 /* Frameworks */ = {
@@ -233,6 +244,7 @@
 			files = (
 				8312C6311E380F2400B2A214 /* AppDelegate.swift in Sources */,
 				833191601E3E8A6900AB2317 /* Places.swift in Sources */,
+				83F9E2F81E8DCD1D000B6C51 /* MainListTableViewCell.swift in Sources */,
 				833191621E3EE74D00AB2317 /* ListViewController.swift in Sources */,
 				83E226E71E8B76B600D635C7 /* DetailViewController.swift in Sources */,
 				833191641E3EF62A00AB2317 /* Place.swift in Sources */,
