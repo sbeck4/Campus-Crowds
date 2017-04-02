@@ -52,11 +52,11 @@ class Places {
 
         let wfic = Place(name: "Watt Family Innovation Center", latitude: 34.676134, longitude: -82.836939, currentCrowdLevel: 0, imageName: "study", maxCrowdNumber: 500, currentCrowdNumber: 0, floors: [], placeImage: "http://newsstand.clemson.edu/wp-content/uploads/2016/01/Watt-Center-at-dusk-500x330.jpg", hours: "Mon - Thurs: 7:30am-Midnight, Fri: 7:30am-6:00pm, Weekends: CLOSED", address: "Sigma Drive, Clemson, SC 29634")
 
-        wfic.floors.append(Place(name: "WFIC - Floor 1", latitude: 34.676134, longitude: -82.836939, currentCrowdLevel: 0, imageName: "study", maxCrowdNumber: 0, currentCrowdNumber: 250, floors: [], placeImage: "http://newsstand.clemson.edu/wp-content/uploads/2016/01/Watt-Center-at-dusk-500x330.jpg", hours: "", address: ""))
+        wfic.floors.append(Place(name: "WFIC - Floor 1", latitude: 34.676134, longitude: -82.836939, currentCrowdLevel: 0, imageName: "study", maxCrowdNumber: 250, currentCrowdNumber: 0, floors: [], placeImage: "http://newsstand.clemson.edu/wp-content/uploads/2016/01/Watt-Center-at-dusk-500x330.jpg", hours: "", address: ""))
 
-        wfic.floors.append(Place(name: "WFIC - Floor 2", latitude: 34.676134, longitude: -82.836939, currentCrowdLevel: 0, imageName: "study", maxCrowdNumber: 0, currentCrowdNumber: 125, floors: [], placeImage: "", hours: "", address: ""))
+        wfic.floors.append(Place(name: "WFIC - Floor 2", latitude: 34.676134, longitude: -82.836939, currentCrowdLevel: 0, imageName: "study", maxCrowdNumber: 125, currentCrowdNumber: 0, floors: [], placeImage: "", hours: "", address: ""))
 
-        wfic.floors.append(Place(name: "WFIC - Floor 3", latitude: 34.676134, longitude: -82.836939, currentCrowdLevel: 0, imageName: "study", maxCrowdNumber: 0, currentCrowdNumber: 125, floors: [], placeImage: "", hours: "", address: ""))
+        wfic.floors.append(Place(name: "WFIC - Floor 3", latitude: 34.676134, longitude: -82.836939, currentCrowdLevel: 0, imageName: "study", maxCrowdNumber: 125, currentCrowdNumber: 0, floors: [], placeImage: "", hours: "", address: ""))
 
         places.append(wfic)
 
@@ -71,10 +71,13 @@ class Places {
         for place in places {
             place.currentCrowdNumber = Int.init(arc4random_uniform(UInt32.init(place.maxCrowdNumber)))
             place.currentCrowdLevel = Place.currentCrowdLevelCalculation(num: Int(100.0 * (Float(place.currentCrowdNumber)/Float(place.maxCrowdNumber))))
-            print(Float(place.currentCrowdNumber))
-            print(Float(place.maxCrowdNumber))
-            print((Float(place.currentCrowdLevel)/Float(place.maxCrowdNumber)))
-            print(100.0 * (Float(place.currentCrowdLevel)/Float(place.maxCrowdNumber)))
+
+            if place.floors != [] {
+                for floor in place.floors {
+                    floor.currentCrowdNumber = Int.init(arc4random_uniform(UInt32.init(floor.maxCrowdNumber)))
+                    floor.currentCrowdLevel = Place.currentCrowdLevelCalculation(num: Int(100.0 * (Float(floor.currentCrowdNumber)/Float(floor.maxCrowdNumber))))
+                }
+            }
         }
 
         return places

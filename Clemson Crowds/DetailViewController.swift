@@ -34,6 +34,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.crowdLevelView.layer.cornerRadius = cell.crowdLevelView.frame.width/2
         cell.crowdLevelImageView.image = place.crowdImage()
         cell.placeNameLabel.text = place.name
+        cell.peopleAmoutLabel.text = "~\(place.currentCrowdNumber!) people"
 
         return cell
     }

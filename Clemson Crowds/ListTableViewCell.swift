@@ -16,5 +16,6 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet var lastUpdatedTimeLabel: UILabel!
     @IBOutlet var crowdLevelView: UIView!
     @IBOutlet var crowdLevelImageView: UIImageView!
+    @IBOutlet var peopleAmoutLabel: UILabel!
 
 }
